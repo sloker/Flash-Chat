@@ -11,16 +11,11 @@ import Firebase
 
 class ChatViewController: UIViewController {
     
-    // Declare instance variables here
-
-    // We've pre-linked the IBOutlets
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var sendButton: UIButton!
     @IBOutlet var messageTextfield: UITextField!
     @IBOutlet var messageTableView: UITableView!
-    
-    
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         print("Loaded with user \(Auth.auth().currentUser!.email!)")

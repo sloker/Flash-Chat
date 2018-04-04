@@ -11,8 +11,6 @@ import SVProgressHUD
 
 class RegisterViewController: UIViewController {
 
-    //Pre-linked IBOutlets
-
     @IBOutlet var emailTextfield: UITextField!
     @IBOutlet var passwordTextfield: UITextField!
     
@@ -27,17 +25,21 @@ class RegisterViewController: UIViewController {
   
     @IBAction func registerPressed(_ sender: AnyObject) {
         SVProgressHUD.show()
+        
+        // attempt to create a new user with the given email and password
         Auth.auth().createUser(withEmail: emailTextfield.text!, password: passwordTextfield.text!) { (user, err) in
             if err != nil {
                 SVProgressHUD.dismiss()
                 self.showError(err!)
             } else {
                 if let user : User = Auth.auth().currentUser {
+                    // registration was successful - send a verification email to the provided user
                     user.sendEmailVerification() { (err) in
                         SVProgressHUD.dismiss()
                         if err != nil {
                             self.showError(err!)
                         } else {
+                            // verification email successfully sent - send the user to the login screen
                             let alert = UIAlertController(title: "Email Verification Sent",
                                                           message: "Please follow the instructions in the email to complete registration.",
                                                           preferredStyle: UIAlertControllerStyle.alert)
