@@ -12,8 +12,7 @@ import Firebase
 class ChatViewController: UIViewController {
     
     // Declare instance variables here
-    var user : User?
-    
+
     // We've pre-linked the IBOutlets
     @IBOutlet var heightConstraint: NSLayoutConstraint!
     @IBOutlet var sendButton: UIButton!
