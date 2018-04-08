@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import ChameleonFramework
 
 class ChatViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate {
 
@@ -60,6 +61,11 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
         cell.messageBody.text = message.messageBody
         cell.senderUsername.text = message.sender
         cell.avatarImageView.image = UIImage(named: "egg")
+        if message.sender == Auth.auth().currentUser?.email as String! {
+            cell.messageBackground.backgroundColor = UIColor.flatSkyBlue()
+        } else {
+            cell.messageBackground.backgroundColor = UIColor.flatWatermelon()
+        }
         return cell
     }
 
@@ -70,7 +76,7 @@ class ChatViewController: UIViewController, UITableViewDelegate, UITableViewData
     func configureTableView() {
         messageTableView.rowHeight = UITableViewAutomaticDimension
         messageTableView.estimatedRowHeight = 100
-        messageTableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        messageTableView.separatorStyle = .none
     }
     
     func scrollTableViewToBottom() {
