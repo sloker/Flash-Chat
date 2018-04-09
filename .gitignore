@@ -1,0 +1,6 @@
+.gitignore.swp
+Flash Chat.xcodeproj/project.xcworkspace/xcuserdata/sloker.xcuserdatad/
+Flash Chat.xcodeproj/xcuserdata/sloker.xcuserdatad/
+Flash Chat.xcworkspace/xcuserdata/sloker.xcuserdatad/UserInterfaceState.xcuserstate
+Podfile.lock
+Pods/
